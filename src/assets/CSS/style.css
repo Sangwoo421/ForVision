@@ -15,7 +15,7 @@ body {
 }
 
 /*--------------------------------------------------------------
-# Navber
+# Navbar
 --------------------------------------------------------------*/
 
 .NavbarContainer {
@@ -42,10 +42,9 @@ body {
     text-decoration: none;
     font-size: 2rem;
     letter-spacing: 0.3vh;
-    position: absolute; 
+    position: absolute;
     left: 50%;
     transform: translateX(-50%);
-
 }
 
 .MenuIcon {
@@ -55,87 +54,117 @@ body {
     margin-left: auto;
 }
 
-
 /*--------------------------------------------------------------
 # Home
 --------------------------------------------------------------*/
-
 
 .HomeContainer {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    padding: 15%;
     width: 100%;
     box-sizing: border-box;
-    flex-direction: column;
     position: relative;
+    flex-direction: column;
+}
+
+.HomeContent {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    flex-direction: column;
 }
 
 .CameraIcon {
     color: white;
-    text-decoration: none;
-    font-size: 15vh;
-    /* margin-bottom: 10%; */
+    font-size: 10rem;
+    margin-bottom: 20px;
 }
 
 .text_1, .text_2 {
     font-family: 'Amaranth';
     color: white;
     text-align: center;
+    position: relative;
 }
 
 .text_1 {
-    font-size: 4vh;
-    margin-top: 10%;
+    font-size: 2rem;
+    margin-top: 20px;
 }
 
 .text_2 {
-    font-size: 3vh;
-    margin-top: 5%;
+    font-size: 1rem;
+    margin-top: 10px;
 }
 
 /* 반응형 웹 디자인을 위한 미디어 쿼리 */
 
 @media (max-width: 768px) {
-    .navbar-content {
+    .NavbarContent {
         flex-direction: column;
+        align-items: center;
     }
 
-    .logo {
+    .Logo {
+        font-size: 1.5rem;
+        position: static;
+        transform: none;
+        margin-bottom: 10px;
+    }
+
+    .MenuIcon {
         font-size: 1.5rem;
     }
 
-    .menu-icon {
+    .HomeContainer {
+        padding: 10%;
+    }
+
+    .CameraIcon {
+        font-size: 6rem;
+    }
+
+    .text_1 {
         font-size: 1.5rem;
+    }
+
+    .text_2 {
+        font-size: 0.875rem;
     }
 }
 
 @media (max-width: 480px) {
-    .navbar-content {
+    .NavbarContent {
         flex-direction: column;
         align-items: flex-start;
     }
 
-    .logo {
+    .Logo {
         font-size: 1.2rem;
     }
 
-    .menu-icon {
+    .MenuIcon {
         font-size: 1.2rem;
     }
-}
 
-@media (max-width: 480px) {
+    .HomeContainer {
+        padding: 5%;
+    }
+
     .CameraIcon {
-        font-size: 60px;
+        font-size: 4rem;
     }
 
     .text_1 {
-        font-size: 18px;
+        font-size: 1.2rem;
     }
 
     .text_2 {
-        font-size: 10px;
+        font-size: 0.75rem;
     }
 }
