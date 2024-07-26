@@ -50,8 +50,9 @@ body {
 .MenuIcon {
     color: white;
     text-decoration: none;
-    font-size: 2rem;
+    font-size: 3rem;
     margin-left: auto;
+    margin-bottom: 0.2rem;
 }
 
 /*--------------------------------------------------------------
@@ -102,69 +103,31 @@ body {
     margin-top: 10px;
 }
 
+
+/*--------------------------------------------------------------
+# Webcam
+--------------------------------------------------------------*/
+.webcamContainer {
+    display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  width: 100vw;
+  background-color: #282c34;
+  color: white;
+  margin: 0;
+  padding: 0;
+  
+}
+
+.webcam {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+        border: none;
+}
+
+
 /* 반응형 웹 디자인을 위한 미디어 쿼리 */
 
-@media (max-width: 768px) {
-    .NavbarContent {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .Logo {
-        font-size: 1.5rem;
-        position: static;
-        transform: none;
-        margin-bottom: 10px;
-    }
-
-    .MenuIcon {
-        font-size: 1.5rem;
-    }
-
-    .HomeContainer {
-        padding: 10%;
-    }
-
-    .CameraIcon {
-        font-size: 6rem;
-    }
-
-    .text_1 {
-        font-size: 1.5rem;
-    }
-
-    .text_2 {
-        font-size: 0.875rem;
-    }
-}
-
-@media (max-width: 480px) {
-    .NavbarContent {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
-    .Logo {
-        font-size: 1.2rem;
-    }
-
-    .MenuIcon {
-        font-size: 1.2rem;
-    }
-
-    .HomeContainer {
-        padding: 5%;
-    }
-
-    .CameraIcon {
-        font-size: 4rem;
-    }
-
-    .text_1 {
-        font-size: 1.2rem;
-    }
-
-    .text_2 {
-        font-size: 0.75rem;
-    }
-}

@@ -10,16 +10,15 @@ const Camera = () => {
   }, [webcamRef]);
 
   return (
-    <div>
-      <h1>React Webcam Example</h1>
+    <div className="WebcamContainer">
+
       <Webcam
         audio={false}
         ref={webcamRef}
         screenshotFormat="image/jpeg"
-        width={640}
-        height={480}
+        className="webcam"
       />
-      <button onClick={capture}>Capture photo</button>
+      {/* <button onClick={capture}>Capture photo</button> */}
     </div>
   );
 }
