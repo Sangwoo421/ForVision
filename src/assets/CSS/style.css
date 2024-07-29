@@ -8,7 +8,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Amaranth:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 
 body {
-    background-color: #006769;
     margin: 0;
     padding: 0;
     font-family: Arial, Helvetica, sans-serif;
@@ -25,6 +24,7 @@ body {
     padding: 20px;
     width: 100%;
     box-sizing: border-box;
+    background-color: #006769;
 }
 
 .NavbarContent {
@@ -68,6 +68,7 @@ body {
     box-sizing: border-box;
     position: relative;
     flex-direction: column;
+    background-color: #006769;
 }
 
 .HomeContent {
@@ -128,6 +129,49 @@ body {
         border: none;
 }
 
+
+/*--------------------------------------------------------------
+# Detail
+--------------------------------------------------------------*/
+
+
+.DetailContent {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.AImg {
+    width: 60%;
+    border: 2px solid black;
+    margin-left: 30%;
+}
+
+.Title, .Method, .Content, .Explain {
+    text-align: left;
+    width: 100%;
+    font-size: 2rem;
+    margin-bottom: 10px;
+    margin-left: 25%;
+}
+
+/* deatail페이지 전용 CSS */
+
+.NavbarContainer.detail-page {
+    background-color: white; /* 원하는 배경 색상 */
+  }
+  
+  .NavbarContainer.detail-page .Logo {
+    color: black; /* 원하는 글씨 색상 */
+  }
+  
+  .NavbarContainer.detail-page .MenuIcon {
+    color: black; /* 원하는 글씨 색상 */
+  }
+ 
 
 /* 반응형 웹 디자인을 위한 미디어 쿼리 */
 
