@@ -5,7 +5,7 @@ import '../assets/CSS/style.css';
 
 const Detail = () => {
   return (
-    <div>
+    <div className='DetailPage'>
       <Navbar />
       <div className="DetailContainer">
         <div className="DetailContent">

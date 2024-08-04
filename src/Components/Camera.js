@@ -9,14 +9,20 @@ const Camera = () => {
     console.log(imageSrc);
   }, [webcamRef]);
 
+  const videoConstraints = {
+    width: 1280,
+    height: 720,
+    facingMode: { exact: "environment" }
+  };
+
   return (
     <div className="WebcamContainer">
-
       <Webcam
         audio={false}
         ref={webcamRef}
         screenshotFormat="image/jpeg"
         className="webcam"
+        videoConstraints={videoConstraints}
       />
       {/* <button onClick={capture}>Capture photo</button> */}
     </div>
