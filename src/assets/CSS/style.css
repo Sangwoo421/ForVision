@@ -1,114 +1,180 @@
 @font-face {
-    font-family: '116watermelon';
-    src: url('https://gcore.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.0/116watermelon.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
+  font-family: '116watermelon';
+  src: url('https://gcore.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.0/116watermelon.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
 }
 
 @import url('https://fonts.googleapis.com/css2?family=Amaranth:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 
 body {
-    background-color: #006769;
-    margin: 0;
-    padding: 0;
-    font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #006769;
 }
+
 
 /*--------------------------------------------------------------
 # Navbar
 --------------------------------------------------------------*/
 
 .NavbarContainer {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px;
-    width: 100%;
-    box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  width: 100%;
+  box-sizing: border-box;
+  background-color: #006769;
+  position: relative;
+  z-index: 10001;
 }
 
+
 .NavbarContent {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .Logo {
-    font-family: '116watermelon';
-    color: white;
-    text-decoration: none;
-    font-size: 2rem;
-    letter-spacing: 0.3vh;
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
+  font-family: '116watermelon';
+  color: white;
+  text-decoration: none;
+  font-size: 2rem;
+  letter-spacing: 0.3vh;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 .MenuIcon {
-    color: white;
-    text-decoration: none;
-    font-size: 2.5rem;
-    margin-left: auto;
-    margin-bottom: 0.2rem;
+  color: white;
+  text-decoration: none;
+  font-size: 2rem;
+  margin-left: auto;
+  margin-bottom: 0.2rem;
+  cursor: pointer;
+  position: relative;
+  right: 0;
+  z-index: 1002;
 }
+
+.MenubarContainer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  background-color: white;
+  color: black;
+  transform: translateX(100%);
+  transition: transform 0.3s ease-in-out;
+  z-index: 1000;
+  border: 1px solid black;
+}
+
+.MenubarTop {
+  background-color: black;
+  width: 100%;
+  height: 4.64rem;
+  box-sizing: border-box;
+}
+
+.MenubarContainer.show {
+  transform: translateX(0);
+}
+
+.MenubarContainer.show+.NavbarContainer .MenuIcon {
+  right: 250px;
+}
+
+.MenybarContent {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.MenybarContent li {
+  padding: 15px 20px;
+  border-bottom: 1px solid #444;
+}
+
+.MenybarContent li span {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
 
 /*--------------------------------------------------------------
 # Home
 --------------------------------------------------------------*/
 
 .HomeContainer {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 15%;
-    width: 100%;
-    box-sizing: border-box;
-    position: relative;
-    flex-direction: column;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 15%;
+  width: 100%;
+  box-sizing: border-box;
+  position: relative;
+  flex-direction: column;
+  background-color: #006769;
 }
 
 .HomeContent {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
-    flex-direction: column;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  flex-direction: column;
 }
 
 .CameraIcon {
-    color: white;
-    font-size: 10rem;
-    margin-bottom: 20px;
+  color: white;
+  font-size: 10rem;
+  margin-bottom: 20px;
 }
 
-.text_1, .text_2 {
-    font-family: 'Amaranth';
-    color: white;
-    text-align: center;
-    position: relative;
+@keyframes blink-effect {
+  50% {
+    opacity: 0;
+  }
+}
+
+.text_1,
+.text_2 {
+  font-family: 'Amaranth';
+  color: white;
+  text-align: center;
+  position: relative;
+  animation: blink-effect 1.5s ease-in-out infinite;
 }
 
 .text_1 {
-    font-size: 2rem;
-    margin-top: 20px;
+  font-size: 2rem;
+  margin-top: 20px;
 }
 
 .text_2 {
-    font-size: 1rem;
-    margin-top: 10px;
+  font-size: 1rem;
+  margin-top: 10px;
 }
+
 
 
 /*--------------------------------------------------------------
 # Webcam
 --------------------------------------------------------------*/
 .webcamContainer {
-    display: flex;
+  display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
@@ -118,16 +184,65 @@ body {
   color: white;
   margin: 0;
   padding: 0;
-  
+
 }
 
 .webcam {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-        border: none;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border: none;
 }
 
 
-/* 반응형 웹 디자인을 위한 미디어 쿼리 */
+/*--------------------------------------------------------------
+# Detail
+--------------------------------------------------------------*/
 
+
+.DetailContent {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.AImg {
+  width: 60%;
+  border: 2px solid black;
+  margin-left: 30%;
+  margin-top: 5%;
+}
+
+.Title,
+.Method,
+.Content,
+.Explain {
+  text-align: left;
+  width: 100%;
+  font-size: 2rem;
+  margin-bottom: 10px;
+  margin-left: 25%;
+}
+
+/* deatail페이지 전용 CSS */
+
+.NavbarContainer.detail-page {
+  background-color: white;
+}
+
+.NavbarContainer.detail-page .Logo {
+  color: black;
+}
+
+.NavbarContainer.detail-page .MenuIcon {
+  color: black;
+}
+
+.DetailPage {
+  background-color: white;
+}
+
+/* 반응형 웹 디자인을 위한 미디어 쿼리 */

@@ -27,7 +27,7 @@ const Home= () => {
     return (
         <div>
             <Navbar />
-            <div className='HomeContainer' onTouchStart={handleTouch} onClick={handleTouch}>
+            <div className='HomeContainer' onTouchStart={handleTouch}>
                 <div className='HomeContent'>
                     <FaCamera className='CameraIcon'  />
                     <a className='text_1'>Touch<br />To<br /> Camera</a>

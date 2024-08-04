@@ -1,24 +1,35 @@
-import React, { useRef, useCallback } from 'react';
-import Webcam from 'react-webcam';
+import React, { useRef, useEffect, useState } from 'react';
 
 const Camera = () => {
-  const webcamRef = useRef(null);
+  const [fileSrc, setFileSrc] = useState(null);
+  const fileInputRef = useRef(null);
 
-  const capture = useCallback(() => {
-    const imageSrc = webcamRef.current.getScreenshot();
-    console.log(imageSrc);
-  }, [webcamRef]);
+  useEffect(() => {
+    // 페이지가 로드될 때 카메라를 자동으로 열기
+    fileInputRef.current.click();
+  }, []);
+
+  const handleFileChange = (event) => {
+    const file = event.target.files[0];
+    if (file) {
+      setFileSrc(URL.createObjectURL(file));
+    }
+  };
 
   return (
     <div className="WebcamContainer">
-
-      <Webcam
-        audio={false}
-        ref={webcamRef}
-        screenshotFormat="image/jpeg"
-        className="webcam"
+      <input
+        type="file"
+        id="camera"
+        name="camera"
+        capture="camera"
+        accept="image/*"
+        ref={fileInputRef}
+        style={{ display: 'none' }}
+        onChange={handleFileChange}
       />
-      {/* <button onClick={capture}>Capture photo</button> */}
+      
+      {fileSrc && <img id="pic" src={fileSrc} alt="Selected" style={{ width: '100%' }} />}
     </div>
   );
 }
