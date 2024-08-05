@@ -50,6 +50,7 @@ body {
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
+  text-align: center;
 }
 
 .MenuIcon {
@@ -141,6 +142,7 @@ body {
   color: white;
   font-size: 10rem;
   margin-bottom: 20px;
+  margin-top: 120px;
 }
 
 @keyframes blink-effect {
@@ -173,14 +175,14 @@ body {
 /*--------------------------------------------------------------
 # Webcam
 --------------------------------------------------------------*/
-.webcamContainer {
+.WebcamContainer {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   height: 100vh;
   width: 100vw;
-  background-color: #282c34;
+  background-color: #006769;
   color: white;
   margin: 0;
   padding: 0;
