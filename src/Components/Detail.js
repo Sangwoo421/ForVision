@@ -1,10 +1,9 @@
 import React from 'react';
 import Navbar from './Navbar';
-import {useLocation} from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import '../assets/CSS/style.css';
 
 const Detail = () => {
-
   const location = useLocation();
   const { state } = location;
 
