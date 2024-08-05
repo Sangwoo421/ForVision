@@ -1,18 +1,21 @@
 import React, { useRef, useEffect, useState } from 'react';
+import {useNavigate} from 'react-router-dom';
 
 const Camera = () => {
   const [fileSrc, setFileSrc] = useState(null);
   const fileInputRef = useRef(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
-    // 페이지가 로드될 때 카메라를 자동으로 열기
     fileInputRef.current.click();
   }, []);
 
   const handleFileChange = (event) => {
     const file = event.target.files[0];
     if (file) {
-      setFileSrc(URL.createObjectURL(file));
+      const fileURL = URL.createObjectURL(file);
+      setFileSrc(fileURL);
+      navigate('/detail', { state: { fileSrc: fileURL } });
     }
   };
 
