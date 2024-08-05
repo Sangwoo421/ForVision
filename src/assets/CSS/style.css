@@ -7,13 +7,22 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Amaranth:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 
-body {
+* {
   margin: 0;
   padding: 0;
-  font-family: Arial, Helvetica, sans-serif;
-  background-color: #006769;
+  box-sizing: border-box;
 }
 
+html,
+body {
+  height: 100%;
+  overflow: hidden;
+  /* 불필요한 스크롤을 제거 */
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
 
 /*--------------------------------------------------------------
 # Navbar
@@ -30,7 +39,6 @@ body {
   position: relative;
   z-index: 10001;
 }
-
 
 .NavbarContent {
   display: flex;
@@ -111,7 +119,6 @@ body {
   cursor: pointer;
 }
 
-
 /*--------------------------------------------------------------
 # Home
 --------------------------------------------------------------*/
@@ -122,10 +129,12 @@ body {
   align-items: center;
   padding: 15%;
   width: 100%;
+  min-height: 100vh;
   box-sizing: border-box;
   position: relative;
   flex-direction: column;
   background-color: #006769;
+  overflow: hidden;
 }
 
 .HomeContent {
@@ -142,7 +151,6 @@ body {
   color: white;
   font-size: 10rem;
   margin-bottom: 20px;
-  margin-top: 120px;
 }
 
 @keyframes blink-effect {
@@ -170,8 +178,6 @@ body {
   margin-top: 10px;
 }
 
-
-
 /*--------------------------------------------------------------
 # Webcam
 --------------------------------------------------------------*/
@@ -186,7 +192,6 @@ body {
   color: white;
   margin: 0;
   padding: 0;
-
 }
 
 .webcam {
@@ -196,11 +201,9 @@ body {
   border: none;
 }
 
-
 /*--------------------------------------------------------------
 # Detail
 --------------------------------------------------------------*/
-
 
 .DetailContent {
   display: flex;
@@ -209,12 +212,13 @@ body {
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
+  background-color: white;
 }
 
 .AImg {
   width: 60%;
   border: 2px solid black;
-  margin-left: 30%;
+  margin-left: 20%;
   margin-top: 5%;
 }
 
@@ -223,10 +227,8 @@ body {
 .Content,
 .Explain {
   text-align: left;
-  width: 100%;
-  font-size: 2rem;
-  margin-bottom: 10px;
-  margin-left: 25%;
+  font-size: 1.5rem;
+  margin-left: 10%;
 }
 
 /* deatail페이지 전용 CSS */
@@ -245,6 +247,9 @@ body {
 
 .DetailPage {
   background-color: white;
+  height: 100%;
 }
 
-/* 반응형 웹 디자인을 위한 미디어 쿼리 */
+.NavbarContainer.detail-page .MenuIcon.open {
+  color: white;
+}

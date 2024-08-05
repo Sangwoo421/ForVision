@@ -1,11 +1,41 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Navbar from './Navbar';
 import { useLocation } from 'react-router-dom';
+import axios from 'axios';
 import '../assets/CSS/style.css';
 
 const Detail = () => {
   const location = useLocation();
   const { state } = location;
+
+  useEffect(() => {
+    if (state && state.fileSrc) {
+      const sendImageToBackend = async () => {
+        try {
+
+          const response = await fetch(state.fileSrc);
+          const blob = await response.blob();
+          
+          const formData = new FormData();
+          formData.append('file', blob, 'image.jpg');
+
+          const result = await axios.post('http://localhost:8080/upload', formData, {
+            headers: {
+              'Content-Type': 'multipart/form-data'
+            }
+          });
+
+          console.log('이미지 업로드 성공:', result.data);
+        } catch (error) {
+          console.error('이미지 업로드 실패:', error);
+        }
+      };
+
+      sendImageToBackend();
+    }
+  }, [state]);
+
+  console.log('Detail component received state:', state);
 
   return (
     <div className='DetailPage'>
