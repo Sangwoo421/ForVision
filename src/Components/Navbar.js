@@ -20,7 +20,7 @@ const Navbar = () => {
     return (
     <header className={`NavbarContainer ${isDetailPage ? 'detail-page' : ''}`}>            
         <div className="NavbarContent">
-            <a className="Logo" href='/'>SNAPBITE</a>
+            <a className="Logo" href='/'>FOR <br /> VISION</a>
             <FontAwesomeIcon className={`MenuIcon ${toggle ? 'open' : ''}`}
             icon={toggle ? faClose : faBars}
             onClick={onIconClick}

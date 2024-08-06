@@ -1,18 +1,26 @@
 import React, { useRef, useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const Camera = () => {
   const [fileSrc, setFileSrc] = useState(null);
   const fileInputRef = useRef(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
-    // 페이지가 로드될 때 카메라를 자동으로 열기
+    console.log('Camera component mounted');
     fileInputRef.current.click();
   }, []);
 
   const handleFileChange = (event) => {
     const file = event.target.files[0];
     if (file) {
-      setFileSrc(URL.createObjectURL(file));
+      const fileURL = URL.createObjectURL(file);
+      setFileSrc(fileURL);
+      console.log('File selected:', file);
+      console.log('Navigating to /detail with state:', { fileSrc: fileURL });
+      navigate('/detail', { state: { fileSrc: fileURL } });
+    } else {
+      console.log('No file selected');
     }
   };
 
@@ -28,7 +36,6 @@ const Camera = () => {
         style={{ display: 'none' }}
         onChange={handleFileChange}
       />
-      
       {fileSrc && <img id="pic" src={fileSrc} alt="Selected" style={{ width: '100%' }} />}
     </div>
   );
