@@ -219,8 +219,13 @@ body {
   width: 60%;
   border: 2px solid black;
   margin-left: 20%;
+  margin-top: 10%;
+}
+
+.Title {
   margin-top: 5%;
 }
+
 
 .Title,
 .Method,

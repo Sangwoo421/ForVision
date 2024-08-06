@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import Navbar from './Navbar';
 import { useLocation } from 'react-router-dom';
 import axios from 'axios';
@@ -7,6 +7,7 @@ import '../assets/CSS/style.css';
 const Detail = () => {
   const location = useLocation();
   const { state } = location;
+  const {foodName,setFoodName} = useState('');
 
   useEffect(() => {
     if (state && state.fileSrc) {
@@ -26,6 +27,7 @@ const Detail = () => {
           });
 
           console.log('이미지 업로드 성공:', result.data);
+          setFoodName(result.data.foodName);
         } catch (error) {
           console.error('이미지 업로드 실패:', error);
         }
@@ -48,10 +50,10 @@ const Detail = () => {
             )}
           </div>
 
-          <div className="Title"> <br /> 음식이름</div>
-          <div className="Method">보관방법</div>
+          <div className="Title"> { foodName }</div>
+          {/* <div className="Method">보관방법</div>
           <div className="Content">부패도</div>
-          <div className="Explain">설명</div>
+          <div className="Explain">설명</div> */}
         </div>
       </div>
     </div>
