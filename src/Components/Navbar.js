@@ -31,13 +31,13 @@ const Navbar = () => {
                 </div>
                 <ul className='MenybarContent'>
                     <li>
-                        <span>11111111</span>
+                        <span>로그인</span>
                     </li>
                     <li>
-                        <span>22222222</span>
+                        <span>회원가입</span>
                     </li>
                     <li>
-                        <span>33333333</span>
+                        <span>최근기록</span>
                     </li>
                 </ul>
             </nav>

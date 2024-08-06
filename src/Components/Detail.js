@@ -7,37 +7,60 @@ import '../assets/CSS/style.css';
 const Detail = () => {
   const location = useLocation();
   const { state } = location;
-  const {foodName,setFoodName} = useState('');
+  const [foodNames, setFoodNames] = useState([]);
+  const [spoilNames, setSpoilNames] = useState([]);
 
   useEffect(() => {
-    if (state && state.fileSrc) {
-      const sendImageToBackend = async () => {
-        try {
+    console.log('Detail component received state:', state);
 
+    if (state && state.fileSrc) {
+      const fetchData = async () => {
+        try {
           const response = await fetch(state.fileSrc);
           const blob = await response.blob();
-          
+
           const formData = new FormData();
           formData.append('file', blob, 'image.jpg');
 
-          const result = await axios.post('http://localhost:8080/upload', formData, {
+          const result = await axios.post('/upload', formData, {
             headers: {
               'Content-Type': 'multipart/form-data'
             }
           });
 
           console.log('이미지 업로드 성공:', result.data);
-          setFoodName(result.data.foodName);
+
+          await axios.post('/result', result.data);
+
+          console.log('받은 음식 이름들:', result.data.foodNames);
+          console.log('받은 상함 상태들:', result.data.spoilNames);
+
+          setFoodNames(result.data.foodNames);
+          setSpoilNames(result.data.spoilNames);
         } catch (error) {
           console.error('이미지 업로드 실패:', error);
         }
       };
 
-      sendImageToBackend();
+      fetchData();
     }
   }, [state]);
 
-  console.log('Detail component received state:', state);
+  useEffect(() => {
+    const fetchResult = async () => {
+      console.log('GET /result 엔드포인트 호출');
+      try {
+        const response = await axios.get('/result');
+        console.log('프론트엔드로 받은 데이터:', response.data);
+        setFoodNames(response.data.foodNames);
+        setSpoilNames(response.data.spoilNames);
+      } catch (error) {
+        console.error('결과를 가져오는 중 오류 발생:', error);
+      }
+    };
+
+    fetchResult();
+  }, []);
 
   return (
     <div className='DetailPage'>
@@ -48,12 +71,24 @@ const Detail = () => {
             {state && state.fileSrc && (
               <img src={state.fileSrc} alt="Captured" className="AImg" />
             )}
+             {/* <img src="/images/apple.jpg" alt="Loading" className='AImg'/> */}
           </div>
 
-          <div className="Title"> { foodName }</div>
-          {/* <div className="Method">보관방법</div>
-          <div className="Content">부패도</div>
-          <div className="Explain">설명</div> */}
+          <div className="Title">음식:</div>
+          <ul>
+            {foodNames.map((name, index) => (
+              <li key={index}>{name}</li>
+            ))}
+          </ul>
+
+          <div className="Title">부패도:</div>
+          <ul>
+            {spoilNames.map((name, index) => (
+              <li key={index}>{name}</li>
+            ))}
+            <li>
+            </li>
+          </ul>
         </div>
       </div>
     </div>
