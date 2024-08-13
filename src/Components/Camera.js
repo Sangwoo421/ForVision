@@ -1,10 +1,7 @@
 import React, { useRef, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
-import * as cocoSsd from '@tensorflow-models/coco-ssd';
-import '@tensorflow/tfjs';
+import * as ort from 'onnxruntime-web';
 import Navbar from './Navbar';
-
 import '../assets/CSS/style.css';
 
 const Camera = () => {
@@ -14,12 +11,16 @@ const Camera = () => {
   const canvasRef = useRef(null);
   const modelRef = useRef(null);
   const navigate = useNavigate();
-  const [hasDetected, setHasDetected] = useState(false);  // 이미 감지되었는지 추적
+  const [hasDetected, setHasDetected] = useState(false);
 
   useEffect(() => {
     const loadModel = async () => {
-      modelRef.current = await cocoSsd.load();
-      console.log('COCO-SSD Model loaded');
+      try {
+        modelRef.current = await ort.InferenceSession.create('public/TestFDA.onnx');
+        console.log('ONNX Model loaded');
+      } catch (error) {
+        console.error('Error loading ONNX model:', error);
+      }
     };
 
     loadModel();
@@ -30,7 +31,7 @@ const Camera = () => {
           videoRef.current.srcObject = stream;
           videoRef.current.onloadedmetadata = () => {
             videoRef.current.play();
-            detectObjects();  // 비디오가 준비된 후에 객체 감지를 시작합니다.
+            detectObjects();
           };
         })
         .catch(err => {
@@ -40,24 +41,29 @@ const Camera = () => {
   }, []);
 
   const detectObjects = async () => {
-    if (videoRef.current && modelRef.current && !hasDetected) {  // 이미 감지되었다면 더 이상 감지하지 않음
-      const predictions = await modelRef.current.detect(videoRef.current);
+    if (videoRef.current && modelRef.current && !hasDetected) {
+      const context = canvasRef.current.getContext('2d');
+      context.drawImage(videoRef.current, 0, 0, canvasRef.current.width, canvasRef.current.height);
+      const imageData = context.getImageData(0, 0, canvasRef.current.width, canvasRef.current.height);
+      
+      const inputTensor = new ort.Tensor('float32', new Float32Array(imageData.data.buffer), [1, 3, canvasRef.current.height, canvasRef.current.width]);
 
-      if (predictions.length > 0) {
-        console.log('Objects detected:', predictions);
+      try {
+        const results = await modelRef.current.run({ input: inputTensor });
+        const predictions = results.output.data;
+        
+        // 여기서 `predictions` 데이터로 감지된 객체를 분석합니다.
+        // `predictions`의 구조와 내용은 모델에 따라 다를 수 있습니다.
 
-        // 특정 클래스만 감지
-        const targetObjects = predictions.filter(prediction => 
-          prediction.class === 'person' || prediction.class === 'apple' // 감지하고 싶은 클래스 지정
-        );
-
-        if (targetObjects.length > 0) {
-          setHasDetected(true);  // 감지된 후 더 이상 감지하지 않도록 설정
-          handleCapture();  // 사물이 감지되면 자동으로 촬영합니다.
+        if (predictions.length > 0) {
+          setHasDetected(true);
+          handleCapture();
         }
+      } catch (error) {
+        console.error('Error during inference:', error);
       }
 
-      requestAnimationFrame(detectObjects);  // 계속해서 객체 감지를 수행합니다.
+      requestAnimationFrame(detectObjects);
     }
   };
 
@@ -84,12 +90,11 @@ const Camera = () => {
         setTimeout(() => {
           navigate('/detail', { state: { fileSrc: fileURL } });
         }, 500);
-
       } catch (error) {
         console.error('File upload error:', error);
       } finally {
         setLoading(false);
-        setHasDetected(false);  // 촬영이 완료되면 다시 감지할 수 있도록 초기화
+        setHasDetected(false);
       }
     }, 'image/jpeg');
   };
