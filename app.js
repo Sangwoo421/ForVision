@@ -1,72 +1,50 @@
 const express = require('express');
-const multer = require('multer');
 const path = require('path');
+const cors = require('cors');
+const dotenv = require('dotenv');
+const session = require('express-session');
 const fs = require('fs');
-const sequelize = require('./db');
-const User = require('./models/user');
-const Image = require('./models/image');
+const https = require('https');
+
+// 환경 변수 로드
+dotenv.config();
 
 const app = express();
+
+// 미들웨어 설정
+app.use(cors());
 app.use(express.json());
 
-// 업로드 디렉토리 생성
-const uploadDir = path.join(__dirname, 'uploads');
-if (!fs.existsSync(uploadDir)) {
-  fs.mkdirSync(uploadDir);
-}
+// 세션 설정
+app.use(session({
+  secret: process.env.COOKIE_SECRET,
+  resave: false,
+  saveUninitialized: true,
+  cookie: { secure: true }
+}));
 
-// Multer 설정
-const storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    const userDir = path.join(uploadDir, req.user.username);
-    if (!fs.existsSync(userDir)) {
-      fs.mkdirSync(userDir);
-    }
-    cb(null, userDir);
-  },
-  filename: function (req, file, cb) {
-    cb(null, Date.now() + path.extname(file.originalname));
-  }
+// 라우터 설정
+const uploadRouter = require('./routes/upload');
+const resultRouter = require('./routes/result');
+const indexRouter = require('./routes/index');
+
+app.use('/upload', uploadRouter);
+app.use('/result', resultRouter);
+app.use('/', indexRouter);
+
+// 오류 처리 미들웨어
+app.use((err, req, res, next) => {
+  console.error('Error stack:', err.stack); // 오류 스택 출력
+  res.status(500).send('Internal Server Error'); // 500 상태 코드와 메시지 전송
 });
 
-const upload = multer({ storage: storage });
+// HTTPS 서버 설정
+const port = process.env.PORT || 8080; // 포트를 환경 변수 또는 기본값 8080에서 가져옴
+const privateKey = fs.readFileSync(path.join(__dirname, 'private.key'), 'utf8'); // 인증서 키 파일 경로
+const certificate = fs.readFileSync(path.join(__dirname, 'cert.crt'), 'utf8');   // 인증서 파일 경로
+const credentials = { key: privateKey, cert: certificate };
 
-// 로그인 미들웨어 (예시)
-app.use(async (req, res, next) => {
-  // 실제로는 토큰 또는 세션을 사용하여 사용자 인증을 해야 합니다.
-  const user = await User.findOne({ where: { username: 'testuser' } });
-  if (!user) {
-    return res.status(401).send('User not found');
-  }
-  req.user = user;
-  next();
+// HTTPS 서버 시작
+https.createServer(credentials, app).listen(port, () => {
+  console.log(`HTTPS Server started on port ${port}`);
 });
-
-// 파일 업로드 엔드포인트
-app.post('/upload', upload.single('image'), async (req, res) => {
-  try {
-    const imagePath = path.join(req.user.username, req.file.filename);
-    const newImage = await Image.create({
-      filename: req.file.filename,
-      path: imagePath,
-      UserId: req.user.id
-    });
-    res.send('File uploaded successfully: ' + req.file.filename);
-  } catch (error) {
-    res.status(500).send('Error uploading file: ' + error.message);
-  }
-});
-
-// 서버 시작
-const startServer = async () => {
-  try {
-    await sequelize.sync({ force: true });
-    app.listen(3000, () => {
-      console.log('Server started on port 3000');
-    });
-  } catch (error) {
-    console.error('Unable to connect to the database:', error);
-  }
-};
-
-startServer();

@@ -36,3 +36,14 @@ seeders/
 
 # Configurations
 config/config.json
+
+# SSL/TLS
+*.pem
+*.key
+*.crt
+*.csr
+*.p12
+*.pfx
+
+# Frontend build
+front/
