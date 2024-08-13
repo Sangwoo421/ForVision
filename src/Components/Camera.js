@@ -2,6 +2,7 @@ import React, { useRef, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import * as ort from 'onnxruntime-web';
 import Navbar from './Navbar';
+import axios from 'axios';
 import '../assets/CSS/style.css';
 
 const Camera = () => {
@@ -29,10 +30,12 @@ const Camera = () => {
       navigator.mediaDevices.getUserMedia({ video: { facingMode: 'environment' } })
         .then(stream => {
           videoRef.current.srcObject = stream;
-          videoRef.current.onloadedmetadata = () => {
-            videoRef.current.play();
-            detectObjects();
-          };
+          videoRef.current.play();
+
+          // 3초 후에 자동으로 촬영
+          setTimeout(() => {
+            detectObjects();  // 3초 후에 객체 감지 시작
+          }, 3000);
         })
         .catch(err => {
           console.error('Error accessing webcam: ', err);
@@ -51,25 +54,26 @@ const Camera = () => {
       try {
         const results = await modelRef.current.run({ input: inputTensor });
         const predictions = results.output.data;
-        
-        // 여기서 `predictions` 데이터로 감지된 객체를 분석합니다.
-        // `predictions`의 구조와 내용은 모델에 따라 다를 수 있습니다.
 
+        // 여기에 모델의 결과를 해석하는 코드를 추가합니다.
         if (predictions.length > 0) {
           setHasDetected(true);
-          handleCapture();
+          handleCapture(); // 사물이 감지되면 사진을 찍습니다.
         }
       } catch (error) {
         console.error('Error during inference:', error);
       }
-
-      requestAnimationFrame(detectObjects);
     }
   };
 
   const handleCapture = async () => {
     const context = canvasRef.current.getContext('2d');
     context.drawImage(videoRef.current, 0, 0, canvasRef.current.width, canvasRef.current.height);
+    
+    // 비디오 스트림을 정지합니다.
+    videoRef.current.pause();
+    videoRef.current.srcObject.getTracks().forEach(track => track.stop());
+
     canvasRef.current.toBlob(async (blob) => {
       const fileURL = URL.createObjectURL(blob);
       setFileSrc(fileURL);
@@ -103,10 +107,8 @@ const Camera = () => {
     <div>
       <Navbar />
       <div className="WebcamContainer">
-        <video ref={videoRef} className="webcam" />
+        <video ref={videoRef} className="webcam" autoPlay muted playsInline />
         <canvas ref={canvasRef} style={{ display: 'none' }} />
-
-        <button onClick={handleCapture} className="captureButton">촬영</button>
 
         {loading && (
           <div className="loading">
