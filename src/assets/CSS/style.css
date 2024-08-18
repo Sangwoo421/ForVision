@@ -13,14 +13,9 @@
   box-sizing: border-box;
 }
 
-html,
-body {
-  height: 100%;
-  overflow: hidden;
-}
-
 body {
   font-family: Arial, Helvetica, sans-serif;
+  overflow: hidden;
 }
 
 
@@ -38,6 +33,7 @@ body {
   background-color: #006769;
   position: relative;
   z-index: 10001;
+  margin-bottom: 0;
 }
 
 
@@ -201,7 +197,6 @@ body {
 
 .webcam {
   width: 90vw;  
-  /* padding-bottom: 30%; */
   height: auto;
   object-fit: cover;
 }
@@ -210,38 +205,75 @@ body {
 # Detail
 --------------------------------------------------------------*/
 
+.DetailContainer {
+  
+  background-color: ghostwhite;
+  border-top: 1px solid black;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+}
+
 .DetailContent {
+
+  width: 90vw;
+  height: 85vh;
+  background-color: white;
+  border-radius: 30px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  border: 1px solid #ddd;
+  padding: 10% 10% 10% 10%;
+  margin-bottom: 15%;
+  box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
-  background-color: white;
-}
-
-.AImg {
-  width: 60%;
-  border: 2px solid black;
-  margin-left: 20%;
-  margin-top: 10%;
-}
-
-.Title {
-  margin-top: 5%;
-}
-
-
-.Title,
-.Method,
-.Content,
-.Explain {
+  align-items: center;
+  overflow-y: auto;
   text-align: left;
-  font-size: 1.5rem;
-  margin-left: 10%;
 }
 
-/* deatail페이지 전용 CSS */
+.Result {
+
+  width: auto;
+  height: auto;
+  max-height: 30vh;
+  border-radius: 5%;
+  border: 1px solid #ddd;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.FoodName {
+  
+  position: fixed;
+  bottom: 47%;
+  left: 45%;
+  transform: translateX(-50%);
+  padding: 10px;
+  z-index: 1000;
+  text-align: left;
+  width: 60%;
+  max-width: 600px;
+  white-space: nowrap;
+}
+
+.Spoilage {
+
+  position: fixed;
+  bottom: 44%;
+  left: 45%;
+  transform: translateX(-50%);
+  padding: 10px;
+  z-index: 1000;
+  text-align: left;
+  width: 60%;
+  max-width: 600px;
+  white-space: nowrap;
+}
+
+/* deatail페이지 전용 Navbar CSS */
 
 .NavbarContainer.detail-page {
   background-color: white;
@@ -255,16 +287,13 @@ body {
   color: black;
 }
 
-.DetailPage {
-  background-color: white;
-  height: 100vh;
-  overflow-x: hidden ;
-  overflow-y: auto;
-}
-
 .NavbarContainer.detail-page .MenuIcon.open {
   color: white;
 }
+
+/*--------------------------------------------------------------
+# LODING
+--------------------------------------------------------------*/
 
 .loading {
   position: fixed;
