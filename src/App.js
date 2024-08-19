@@ -9,7 +9,6 @@ import './assets/CSS/style.css'
 const App = () => {
   return (
     <Router>
-      {/* <Navbar /> */}
             <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path='/camera' element={<Camera />} />

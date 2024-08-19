@@ -30,6 +30,8 @@ const Camera = () => {
 
   useEffect(() => {
     if (modelLoaded) {
+      speakText("카메라가 켜졌습니다");
+
       if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
         navigator.mediaDevices.getUserMedia({ video: { facingMode: 'environment' } })
           .then(stream => {
@@ -46,6 +48,13 @@ const Camera = () => {
       }
     }
   }, [modelLoaded]);
+
+  const speakText = (text) => {
+    const synth = window.speechSynthesis;
+    const utterance = new SpeechSynthesisUtterance(text);
+    utterance.lang = 'ko-KR';
+    synth.speak(utterance);
+  };
 
   const detectFood = async (intervalId) => {
     if (session && videoRef.current && canvasRef.current && !captured) {
@@ -93,6 +102,8 @@ const Camera = () => {
     canvasRef.current.toBlob(async (blob) => {
       const fileURL = URL.createObjectURL(blob);
       setFileSrc(fileURL);
+
+      speakText("사진이 찍혔습니다. 잠시만 기다려주세요");  // 사진이 찍힌 후 TTS 알림
 
       const formData = new FormData();
       formData.append('file', blob, 'image.jpg');
