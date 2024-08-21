@@ -31,7 +31,7 @@ const Home= () => {
                 <div className='HomeContent'>
                     <FaCamera className='CameraIcon'  />
                     <a className='text_1'>Touch<br />To<br /> Camera</a>
-                    <a className='text_2'>화면을 두 번 터치하세요</a>
+                    <a className='text_2'>화면을 터치하세요</a>
                 </div>
             </div>
         </div>

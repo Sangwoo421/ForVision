@@ -21,7 +21,7 @@ const Detail = () => {
         setFoodName(response.data.foodNames);
         setSpoilage(response.data.spoilNames);
         
-        speakText(`이름: ${response.data.foodNames}, 부패도: ${response.data.spoilNames}`);
+        speakText(`${response.data.foodNames}, ${response.data.spoilNames}`);
 
       } catch (error) {
         console.error('Error fetching data from /result:', error);
@@ -47,11 +47,12 @@ const Detail = () => {
           {fileSrc && (
             <img src={fileSrc} className='Result' alt="Captured" />
           )}
+            <img src='/appl2_2.png' className='Result'/>
           <div className='FoodName'>
-            이름: {foodName}
+            사과 {foodName}
           </div>
           <div className='Spoilage'>
-            부패도: {spoilage}
+            상태: 상함 {spoilage}
           </div>
         </div>
       </div>

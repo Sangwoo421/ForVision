@@ -30,10 +30,11 @@ body {
   padding: 20px;
   width: 100%;
   box-sizing: border-box;
-  background-color: #006769;
+  background-color: black;
   position: relative;
   z-index: 10001;
   margin-bottom: 0;
+  border-bottom: 1px solid white;
 }
 
 
@@ -130,7 +131,7 @@ body {
   box-sizing: border-box;
   position: relative;
   flex-direction: column;
-  background-color: #006769;
+  background-color: black;
   overflow: hidden;
 }
 
@@ -185,8 +186,7 @@ body {
   justify-content: center;
   height: 100vh;
   width: 100vw;
-  background-color: #006769;
-  color: white;
+  background-color: black;
   margin: 0;
   padding: 0;
   position: absolute;
@@ -196,8 +196,8 @@ body {
 }
 
 .webcam {
-  width: 90vw;  
-  height: auto;
+  width: 100vw;
+  height: calc(110vh-60px);
   object-fit: cover;
 }
 
@@ -249,20 +249,22 @@ body {
   
   position: fixed;
   bottom: 47%;
-  left: 45%;
+  left: 50%;
   transform: translateX(-50%);
   padding: 10px;
   z-index: 1000;
-  text-align: left;
+  text-align: center;
   width: 60%;
   max-width: 600px;
+  font-size: 1.5rem;
   white-space: nowrap;
+
 }
 
 .Spoilage {
 
   position: fixed;
-  bottom: 44%;
+  bottom: 42%;
   left: 45%;
   transform: translateX(-50%);
   padding: 10px;
@@ -271,6 +273,7 @@ body {
   width: 60%;
   max-width: 600px;
   white-space: nowrap;
+  font-size: 1.5rem;
 }
 
 /* deatail페이지 전용 Navbar CSS */
@@ -304,7 +307,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(131, 131, 131, 0.5);
 }
 
 .loading img {

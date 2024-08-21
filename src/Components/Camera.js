@@ -35,12 +35,14 @@ const Camera = () => {
       if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
         navigator.mediaDevices.getUserMedia({ video: { facingMode: 'environment' } })
           .then(stream => {
-            videoRef.current.srcObject = stream;
-            videoRef.current.play();
+            if (videoRef.current) {
+              videoRef.current.srcObject = stream;
+              videoRef.current.play();
 
-            const id = setInterval(() => {
-              detectFood(id);
-            }, 1000);
+              const id = setInterval(() => {
+                detectFood(id);
+              }, 1000);
+            }
           })
           .catch(err => {
             console.error('Error accessing webcam:', err);
@@ -103,7 +105,7 @@ const Camera = () => {
       const fileURL = URL.createObjectURL(blob);
       setFileSrc(fileURL);
 
-      speakText("사진이 찍혔습니다. 잠시만 기다려주세요");  // 사진이 찍힌 후 TTS 알림
+      speakText("사진이 찍혔습니다. 잠시만 기다려주세요");
 
       const formData = new FormData();
       formData.append('file', blob, 'image.jpg');
@@ -111,20 +113,26 @@ const Camera = () => {
       setLoading(true);
 
       try {
-        await axios.post('/upload', formData, {
+        const response = await axios.post('/upload', formData, {
           headers: {
             'Content-Type': 'multipart/form-data',
           },
         });
 
-        setTimeout(() => {
-          navigate('/detail', { state: { fileSrc: fileURL } });
-        }, 500);
-
+        console.log("File upload successful:", response.data);
       } catch (error) {
         console.error('File upload error:', error);
       } finally {
-        setLoading(false);
+        // 스트림 중지 및 비디오 끄기
+        if (videoRef.current && videoRef.current.srcObject) {
+          videoRef.current.srcObject.getTracks().forEach(track => track.stop());
+          videoRef.current.srcObject = null;
+        }
+
+        // 비디오 요소 제거
+        setCaptured(true);
+
+        navigate('/detail', { state: { fileSrc: fileURL } });
       }
     }, 'image/jpeg');
   };
@@ -133,7 +141,9 @@ const Camera = () => {
     <div>
       <Navbar />
       <div className="WebcamContainer">
-        <video ref={videoRef} className="webcam" autoPlay muted playsInline />
+        {!captured && (
+          <video ref={videoRef} className="webcam" autoPlay muted playsInline />
+        )}
         <canvas ref={canvasRef} style={{ display: 'none' }} width="640" height="640" />
 
         {loading && (
