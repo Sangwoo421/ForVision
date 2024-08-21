@@ -7,6 +7,14 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Amaranth:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap');
+
+@keyframes blink-effect {
+  50% {
+    opacity: 0;
+  }
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -151,12 +159,6 @@ body {
   margin-bottom: 20px;
 }
 
-@keyframes blink-effect {
-  50% {
-    opacity: 0;
-  }
-}
-
 .text_1,
 .text_2 {
   font-family: 'Amaranth';
@@ -245,6 +247,17 @@ body {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
+.FoodName,
+.Spoilage {
+  
+  font-size: 1.5rem;
+  font-family: "Noto Sans KR", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
+}
+
+
 .FoodName {
   
   position: fixed;
@@ -256,7 +269,6 @@ body {
   text-align: center;
   width: 60%;
   max-width: 600px;
-  font-size: 1.5rem;
   white-space: nowrap;
 
 }
@@ -273,7 +285,6 @@ body {
   width: 60%;
   max-width: 600px;
   white-space: nowrap;
-  font-size: 1.5rem;
 }
 
 /* deatail페이지 전용 Navbar CSS */
@@ -313,4 +324,21 @@ body {
 .loading img {
   max-width: 100%;
   max-height: 100%;
+}
+
+/*--------------------------------------------------------------
+# Status
+--------------------------------------------------------------*/
+
+.StatusRed {
+
+  position: fixed;
+  margin-top: 95%;
+  left: 12%;
+  background-color: red;
+  width: 75vw;
+  height: 5vh;
+  border-radius: 20px;
+  box-shadow: 0 8px 12px rgba(255, 0, 0, 0.582);
+  animation: blink-effect 1.5s ease-in-out infinite;
 }

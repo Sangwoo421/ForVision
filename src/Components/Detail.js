@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import Navbar from './Navbar';
 import axios from 'axios';
+import Status from './Status';
 import '../assets/CSS/style.css';
 
 const Detail = () => {
@@ -54,6 +55,7 @@ const Detail = () => {
           <div className='Spoilage'>
             상태: 상함 {spoilage}
           </div>
+          <Status />
         </div>
       </div>
     </div>
