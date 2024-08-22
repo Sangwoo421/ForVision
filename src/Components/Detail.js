@@ -16,14 +16,11 @@ const Detail = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-
         const response = await axios.get('/result');
-
         setFoodName(response.data.foodNames);
         setSpoilage(response.data.spoilNames);
         
         speakText(`${response.data.foodNames}, ${response.data.spoilNames}`);
-
       } catch (error) {
         console.error('Error fetching data from /result:', error);
       }
@@ -39,7 +36,6 @@ const Detail = () => {
     synth.speak(utterance);
   };
 
-
   return (
     <div>
       <Navbar />
@@ -48,14 +44,13 @@ const Detail = () => {
           {fileSrc && (
             <img src={fileSrc} className='Result' alt="Captured" />
           )}
-            <img src='/appl2_2.png' className='Result'/>
           <div className='FoodName'>
-            사과 {foodName}
+            {foodName}
           </div>
           <div className='Spoilage'>
-            상태: 상함 {spoilage}
+            상태:{spoilage}
           </div>
-          <Status />
+          <Status spoilage={spoilage} />
         </div>
       </div>
     </div>
