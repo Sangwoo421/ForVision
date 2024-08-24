@@ -44,9 +44,9 @@ const Detail = () => {
           {fileSrc && (
             <img src={fileSrc} className='Result' alt="Captured" />
           )}
-            <img src='/appl2_2.png' className='Result' />
+            {/* <img src='/appl2_2.png' className='Result' /> */}
           <div className='FoodName' >
-            사과 {foodName}
+             {foodName}
           </div>
           <div className='Spoilage'>
             상태:{spoilage}

@@ -248,6 +248,7 @@ body {
   border: 1px solid #ddd;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   margin-top: -10%;
+  overflow-x: hidden;
 }
 
 .FoodName,
@@ -405,7 +406,7 @@ body {
 }
 
 /* 아이폰 12 Pro */
-@media only screen and (min-width: 390px) and (max-width: 844px) {
+@media screen and (min-width: 390px) and (max-width: 844px) {
   
   .FoodName,
   .Spoilage{
@@ -426,7 +427,7 @@ body {
 }
 
 /* 아이폰XR */
-@media only screen and (min-width: 414px) and (max-width: 896px) {
+@media screen and (min-width: 414px) and (max-width: 896px) {
  
   .NavbarContainer {
     flex-direction: row;
@@ -448,7 +449,7 @@ body {
 
 
 /* 아이폰 SE */
-@media only screen and (max-width: 375px) {
+@media screen and (max-width: 375px) {
 
   .NavbarContainer {
     flex-direction: column;
@@ -476,108 +477,24 @@ body {
 
 }
 
-  /* 아이패드 미니 - 세로 모드 */
-@media only screen and (min-width: 768px) and (max-width: 1024px) and (orientation: portrait) {
 
-  .NavbarContainer {
-    flex-direction: row;
-  }
-
+@media screen and (max-width: 412px) and (min-width: 360px) and (orientation: portrait) {
+  
   .DetailContent{
-
-    margin-bottom: 15vh;
-  }
-
-  .Result{
-    margin-top: -6vh;
+    
+    height: 75vh;
+    margin-bottom: 25vh;
   }
 
   .FoodName,
   .Spoilage{
-    font-size: 2rem;
+    margin-bottom: -12vh;
   }
-
-  .Spoilage{
-
-    margin-bottom: -6vh;
-  }
-
+  
   .StatusGreen,
   .StatusRed,
   .StatusYellow{
-    margin-top: 53vh;
+    margin-top: 33vh;
   }
 }
 
- /* 아이패드 미니 - 가로 모드 */
-@media only screen and (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
-
-  .NavbarContainer {
-    flex-direction: row;
-  }
-
-  .MenuIcon {
-    margin-right: 7%;
-  }
-
-  .DetailContent{
-
-    margin-bottom: 23vh;
-  }
-
-  .StatusGreen,
-  .StatusRed,
-  .StatusYellow{
-
-    margin-top: 43vh;
-  }
-
-}
-
-  /* 아이패드 에어 - 세로 모드 */
-@media only screen and (min-width: 820px) and (orientation: portrait) {
-  
-  .MenuIcon {
-
-    padding-right: 7%;
-  }
-
-  .Result {
-
-    margin-top: -5vh;
-  }
-
-  .FoodName {
-
-    margin-bottom: 15vh 
-  }
-
-  .Spoilage {
-
-    margin-bottom: 20vh;
-  }
-
-  .NavbarContainer {
-    flex-direction: row;
-  }
-}
-
-@media only screen and (min-width: 1112px) and (orientation: landscape) {
-  
-  .MenuIcon {
-    padding-right: 7%;
-  }
-
-
-
-  .NavbarContainer {
-    flex-direction: row;
-  }
-
-  .StatusGreen,
-  .StatusRed,
-  .StatusRed {
-
-    margin-top: 40vh;
-  }
-}

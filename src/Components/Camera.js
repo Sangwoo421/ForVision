@@ -18,7 +18,7 @@ const Camera = () => {
   useEffect(() => {
     const loadModel = async () => {
       try {
-        const loadedSession = await ort.InferenceSession.create(process.env.PUBLIC_URL + '/TestFDA.onnx');
+        const loadedSession = await ort.InferenceSession.create(process.env.PUBLIC_URL + '/ProtoTypeFDA.onnx');
         setSession(loadedSession);
         setModelLoaded(true);
       } catch (error) {
@@ -33,7 +33,13 @@ const Camera = () => {
       speakText("카메라가 켜졌습니다");
 
       if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
-        navigator.mediaDevices.getUserMedia({ video: { facingMode: 'environment' } })
+        navigator.mediaDevices.getUserMedia({
+          video: {
+            width: { ideal: 640 },
+            height: { ideal: 480 },
+            facingMode: 'environment' // 전면 카메라로 테스트
+          }
+        })
           .then(stream => {
             if (videoRef.current) {
               videoRef.current.srcObject = stream;

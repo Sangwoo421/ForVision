@@ -1,17 +1,18 @@
-import { FaCamera } from 'react-icons/fa'
-import {useNavigate} from 'react-router-dom'
-import {useState, uesEffect} from 'react'
-import '../assets/CSS/style.css'
+import { FaCamera } from 'react-icons/fa';
+import { useNavigate } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import '../assets/CSS/style.css';
 import Navbar from './Navbar';
 
-
-
-const Home= () => {
+const Home = () => {
     
     const navigate = useNavigate();
-    const [touchStart, setTouchStart] = useState(0);
-    const [touchEnd, setTouchEnd] = useState(0);
     const [lastTap, setLastTap] = useState(0);
+
+    // 앱에 들어오자마자 TTS로 정보를 안내하는 기능
+    useEffect(() => {
+        speakText('안녕하세요. 여러분의 ForVision입니다. 화면을 터치하여 시작하세요.');
+    }, []); // 빈 배열은 컴포넌트가 처음 렌더링될 때만 실행되도록 함
 
     const handleTouch = (e) => {
         const currentTime = new Date().getTime();
@@ -22,7 +23,14 @@ const Home= () => {
         }
     
         setLastTap(currentTime);
-      };
+    };
+    
+    const speakText = (text) => {
+        const synth = window.speechSynthesis;
+        const utterance = new SpeechSynthesisUtterance(text);
+        utterance.lang = 'ko-KR';
+        synth.speak(utterance);
+    };
     
     return (
         <div>
