@@ -1,0 +1,500 @@
+@font-face {
+  font-family: '116watermelon';
+  src: url('https://gcore.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.0/116watermelon.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Amaranth:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap');
+
+@keyframes blink-effect {
+  50% {
+    opacity: 0;
+  }
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  overflow: hidden;
+}
+
+
+/*--------------------------------------------------------------
+# Navbar
+--------------------------------------------------------------*/
+
+.NavbarContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  width: 100%;
+  box-sizing: border-box;
+  background-color: black;
+  position: relative;
+  z-index: 10001;
+  margin-bottom: 0;
+  border-bottom: 1px solid white;
+}
+
+
+.NavbarContent {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.Logo {
+  font-family: '116watermelon';
+  color: white;
+  text-decoration: none;
+  font-size: 2rem;
+  letter-spacing: 0.3vh;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+}
+
+.MenuIcon {
+  color: white;
+  text-decoration: none;
+  font-size: 2rem;
+  margin-left: auto;
+  margin-bottom: 0.2rem;
+  cursor: pointer;
+  position: relative;
+  right: 0;
+  left: 7%;
+  z-index: 1002;
+}
+
+.MenubarContainer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  background-color: white;
+  color: black;
+  transform: translateX(100%);
+  transition: transform 0.3s ease-in-out;
+  z-index: 1000;
+  border: 1px solid black;
+}
+
+.MenubarTop {
+  background-color: black;
+  width: 100%;
+  height: 4.64rem;
+  box-sizing: border-box;
+}
+
+.MenubarContainer.show {
+  transform: translateX(0);
+}
+
+.MenubarContainer.show+.NavbarContainer .MenuIcon {
+  right: 250px;
+}
+
+.MenybarContent {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.MenybarContent li {
+  padding: 15px 20px;
+  border-bottom: 1px solid #444;
+}
+
+.MenybarContent li span {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/*--------------------------------------------------------------
+# Home
+--------------------------------------------------------------*/
+
+.HomeContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 15%;
+  width: 100%;
+  min-height: 100vh;
+  box-sizing: border-box;
+  position: relative;
+  flex-direction: column;
+  background-color: black;
+  overflow: hidden;
+}
+
+.HomeContent {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  flex-direction: column;
+}
+
+.CameraIcon {
+  color: white;
+  font-size: 10rem;
+  margin-bottom: 20px;
+}
+
+.text_1,
+.text_2 {
+  font-family: 'Amaranth';
+  color: white;
+  text-align: center;
+  position: relative;
+  animation: blink-effect 1.5s ease-in-out infinite;
+}
+
+.text_1 {
+  font-size: 2rem;
+  margin-top: 20px;
+}
+
+.text_2 {
+  font-size: 1rem;
+  margin-top: 10px;
+}
+
+/*--------------------------------------------------------------
+# Webcam
+--------------------------------------------------------------*/
+.WebcamContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  width: 100vw;
+  background-color: black;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.webcam {
+  width: 100vw;
+  height: calc(110vh-60px);
+  object-fit: cover;
+}
+
+/*--------------------------------------------------------------
+# Detail
+--------------------------------------------------------------*/
+
+.DetailContainer {
+  
+  background-color: ghostwhite;
+  border-top: 1px solid black;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 10%;
+}
+
+.DetailContent {
+
+  width: 90vw;
+  height: 85vh;
+  background-color: white;
+  border-radius: 30px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  border: 1px solid #ddd;
+  padding: 10% 10% 10% 10%;
+  margin-bottom: 15%;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow-y: auto;
+  text-align: left;
+}
+
+.Result {
+
+  display: flex;
+  width: auto;
+  height: auto;
+  max-height: 30vh;
+  border-radius: 5%;
+  border: 1px solid #ddd;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  margin-top: -10%;
+  overflow-x: hidden;
+}
+
+.FoodName,
+.Spoilage {
+
+  font-size: 1.5rem;
+  font-family: "Noto Sans KR", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
+}
+
+
+.FoodName {
+  
+  position: fixed;
+  bottom: 45%;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 10px;
+  z-index: 1000;
+  text-align: center;
+  width: 60%;
+  max-width: 600px;
+  white-space: nowrap;
+
+}
+
+.Spoilage {
+
+  position: fixed;
+  bottom: 35%;
+  left: 45%;
+  transform: translateX(-50%);
+  padding: 10px;
+  z-index: 1000;
+  text-align: left;
+  width: 60%;
+  max-width: 600px;
+  white-space: nowrap;
+}
+
+/* deatail페이지 전용 Navbar CSS */
+
+.NavbarContainer.detail-page {
+  background-color: white;
+}
+
+.NavbarContainer.detail-page .Logo {
+  color: black;
+}
+
+.NavbarContainer.detail-page .MenuIcon {
+  color: black;
+}
+
+.NavbarContainer.detail-page .MenuIcon.open {
+  color: white;
+}
+
+/*--------------------------------------------------------------
+# LODING
+--------------------------------------------------------------*/
+
+.loading {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(131, 131, 131, 0.5);
+}
+
+.loading img {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+/*--------------------------------------------------------------
+# Status
+--------------------------------------------------------------*/
+
+.StatusRed,
+.StatusYellow,
+.StatusGreen {
+
+  position: fixed;
+  margin-top: 22%;
+  left: 12.8%;
+  width: 75vw;
+  height: 5vh;
+  border-radius: 20px;
+  animation: blink-effect 1.5s ease-in-out infinite;
+}
+
+.StatusRed {
+
+  background-color: red;
+  box-shadow: 0 8px 12px rgba(255, 0, 0, 0.582);
+}
+
+.StatusYellow {
+
+  position: fixed;
+  background-color: rgb(255, 238, 0);
+  box-shadow: 0 8px 12px rgba(255, 238, 0, 0.582);
+}
+
+.StatusGreen {
+
+  background-color: rgb(0, 255, 21);
+  box-shadow: 0 8px 12px rgba(0, 255, 115, 0.582);
+}
+
+/*--------------------------------------------------------------
+# 미디어쿼리
+--------------------------------------------------------------*/
+
+/* 아이폰 14 Pro Max */
+@media screen and (max-width: 768px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: portrait) {
+
+  .MenuIcon{
+
+    margin-right: 7%;
+  }
+
+  .DetailContent{
+
+    height: 88vh;
+    margin-bottom: 13vh;
+  }
+
+  .Result{
+
+    margin-top: -2vh;
+  }
+
+  .FoodName{
+    padding-bottom: 20%;
+  }
+
+  .Spoilage{
+    padding-bottom: 30%;
+  }
+  
+  .StatusGreen,
+  .StatusRed,
+  .StatusYellow{
+
+    margin-top: 50vh;
+  }
+}
+
+/* 아이폰 12 Pro */
+@media screen and (min-width: 390px) and (max-width: 844px) {
+  
+  .FoodName,
+  .Spoilage{
+
+    margin-bottom: -4vh;
+  }
+
+  .NavbarContainer {
+    flex-direction: row;
+  }
+
+  .StatusGreen,
+  .StatusRed,
+  .StatusYellow{
+
+    margin-top: 48vh;
+  }
+}
+
+/* 아이폰XR */
+@media screen and (min-width: 414px) and (max-width: 896px) {
+ 
+  .NavbarContainer {
+    flex-direction: row;
+  }
+
+  .FoodName,
+  .Spoilage{
+
+    margin-bottom: -5%;
+  }
+
+  .StatusGreen,
+  .StatusRed,
+  .StatusYellow{
+    margin-top: 49vh;
+  }
+
+}
+
+
+/* 아이폰 SE */
+@media screen and (max-width: 375px) {
+
+  .NavbarContainer {
+    flex-direction: column;
+  }
+
+  .DetailContent{
+    
+    height: 85vh;
+    margin-bottom: 17.5vh;
+  }
+
+  .FoodName,
+  .Spoilage{
+
+    font-size: 1.3rem;
+    margin-bottom: -20%;
+  }
+
+  .StatusGreen,
+  .StatusRed,
+  .StatusYellow{
+
+    margin-top: 43vh;
+  }
+
+}
+
+
+@media screen and (max-width: 412px) and (min-width: 360px) and (orientation: portrait) {
+  
+  .DetailContent{
+    
+    height: 75vh;
+    margin-bottom: 25vh;
+  }
+
+  .FoodName,
+  .Spoilage{
+    margin-bottom: -12vh;
+  }
+  
+  .StatusGreen,
+  .StatusRed,
+  .StatusYellow{
+    margin-top: 33vh;
+  }
+}
+
