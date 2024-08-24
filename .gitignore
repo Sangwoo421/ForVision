@@ -47,3 +47,6 @@ config/config.json
 
 # Frontend build
 front/
+
+# uploads
+uploads/
