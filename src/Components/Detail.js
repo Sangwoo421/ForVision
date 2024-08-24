@@ -44,7 +44,6 @@ const Detail = () => {
           {fileSrc && (
             <img src={fileSrc} className='Result' alt="Captured" />
           )}
-            {/* <img src='/appl2_2.png' className='Result' /> */}
           <div className='FoodName' >
              {foodName}
           </div>

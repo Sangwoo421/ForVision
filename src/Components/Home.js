@@ -9,10 +9,9 @@ const Home = () => {
     const navigate = useNavigate();
     const [lastTap, setLastTap] = useState(0);
 
-    // 앱에 들어오자마자 TTS로 정보를 안내하는 기능
     useEffect(() => {
         speakText('안녕하세요. 여러분의 ForVision입니다. 화면을 터치하여 시작하세요.');
-    }, []); // 빈 배열은 컴포넌트가 처음 렌더링될 때만 실행되도록 함
+    }, []);
 
     const handleTouch = (e) => {
         const currentTime = new Date().getTime();

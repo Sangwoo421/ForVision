@@ -37,7 +37,7 @@ const Camera = () => {
           video: {
             width: { ideal: 640 },
             height: { ideal: 480 },
-            facingMode: 'environment' // 전면 카메라로 테스트
+            facingMode: 'environment'
           }
         })
           .then(stream => {
@@ -129,13 +129,10 @@ const Camera = () => {
       } catch (error) {
         console.error('File upload error:', error);
       } finally {
-        // 스트림 중지 및 비디오 끄기
         if (videoRef.current && videoRef.current.srcObject) {
           videoRef.current.srcObject.getTracks().forEach(track => track.stop());
           videoRef.current.srcObject = null;
         }
-
-        // 비디오 요소 제거
         setCaptured(true);
 
         navigate('/detail', { state: { fileSrc: fileURL } });
