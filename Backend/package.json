@@ -1,0 +1,29 @@
+{
+  "name": "snapbite_server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "start": "nodemon app",
+    "migrate": "sequelize-cli db:migrate",
+    "migration:generate": "sequelize-cli migration:generate",
+    "seed": "sequelize-cli db:seed:all",
+    "seed:generate": "sequelize-cli seed:generate"
+  },
+  "author": "Sangwoo",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^3.1.4",
+    "sequelize-cli": "^6.6.2"
+  },
+  "dependencies": {
+    "axios": "^1.7.3",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "express-session": "^1.18.0",
+    "multer": "^1.4.5-lts.1",
+    "mysql2": "^3.11.0",
+    "sequelize": "^6.37.3"
+  }
+}
