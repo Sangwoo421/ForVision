@@ -48,7 +48,7 @@ const Detail = () => {
              {foodName}
           </div>
           <div className='Spoilage'>
-            상태:{spoilage}
+            상태: {spoilage}
           </div>
           <Status spoilage={spoilage} />
         </div>
