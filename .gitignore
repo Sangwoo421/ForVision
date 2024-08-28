@@ -1,0 +1,18 @@
+# 확장자 ignore
+*.onnx
+*.pt
+*.txt
+*.jpg
+
+# 라이브러리 ignore
+__pycache__/
+
+Food_Detection_AI/
+
+Spoilage_Detection_AI/
+
+ultralytics/
+
+# 파일 ignore
+AI/main.py
+AI/tes.py
