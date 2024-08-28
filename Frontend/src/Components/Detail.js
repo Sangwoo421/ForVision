@@ -6,33 +6,40 @@ import Status from './Status';
 import '../assets/CSS/style.css';
 
 const Detail = () => {
-
   const location = useLocation();
-  const { fileSrc } = location.state || {};
+  const { fileSrc } = location.state || {}; // 위치 상태에서 fileSrc를 추출
 
-  const [foodName, setFoodName] = useState('');
-  const [spoilage, setSpoilage] = useState('');
+  // 상태 변수 정의
+  const [foodName, setFoodName] = useState(''); // 음식 이름 상태
+  const [spoilage, setSpoilage] = useState(''); // 부패 상태
 
+  // 컴포넌트가 마운트될 때 데이터 로딩
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('/result');
-        setFoodName(response.data.foodNames);
-        setSpoilage(response.data.spoilNames);
-        
-        speakText(`${response.data.foodNames}, ${response.data.spoilNames}`);
+        const response = await axios.get('/result'); // 데이터 요청
+        if (response.data) {
+          // 응답 데이터가 있으면 상태 업데이트
+          setFoodName(response.data.foodNames || '');
+          setSpoilage(response.data.spoilNames || '');
+          speakText(`${response.data.foodNames || ''}, ${response.data.spoilNames || ''}`);
+        }
       } catch (error) {
         console.error('Error fetching data from /result:', error);
-      }
+      } 
     };
 
     fetchData();
   }, []);
 
+  // 텍스트를 음성으로 읽어주는 함수
   const speakText = (text) => {
     const synth = window.speechSynthesis;
+    if (synth.speaking) {
+      synth.cancel();
+    }
     const utterance = new SpeechSynthesisUtterance(text);
-    utterance.lang = 'ko-KR';
+    utterance.lang = 'ko-KR'; 
     synth.speak(utterance);
   };
 
@@ -42,15 +49,15 @@ const Detail = () => {
       <div className='DetailContainer'>
         <div className='DetailContent'>
           {fileSrc && (
-            <img src={fileSrc} className='Result' alt="Captured" />
+            <img src={fileSrc} className='Result' alt="Captured" /> // 파일 소스가 있을 경우 이미지 표시
           )}
-          <div className='FoodName' >
-             {foodName}
+          <div className='FoodName'>
+            {foodName} {/* 음식 이름 표시 */}
           </div>
           <div className='Spoilage'>
-            상태: {spoilage}
+            상태: {spoilage} {/* 부패 상태 표시 */}
           </div>
-          <Status spoilage={spoilage} />
+          <Status spoilage={spoilage} /> {/* 상태 컴포넌트 */}
         </div>
       </div>
     </div>
