@@ -14,5 +14,5 @@ Spoilage_Detection_AI/
 ultralytics/
 
 # 파일 ignore
-run/main.py
-run/tes.py
+AI/main.py
+AI/tes.py
