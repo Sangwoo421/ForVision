@@ -7,9 +7,6 @@ const Status = ({ spoilage }) => {
     // TTS 음성 출력을 위한 함수
     const speakText = (text) => {
         const synth = window.speechSynthesis;
-        if (synth.speaking) {
-            synth.cancel(); // 기존 음성 출력이 있을 경우 취소
-        }
         const utterance = new SpeechSynthesisUtterance(text);
         utterance.lang = 'ko-KR';
         synth.speak(utterance);
@@ -39,7 +36,7 @@ const Status = ({ spoilage }) => {
     return (
         <div className='StatusContainer'>
             <div className='StatusContent'>
-                <div className={statusClass}></div>
+                <div className='StatusYellow'></div>
             </div>
         </div>
     );

@@ -22,6 +22,7 @@ const Detail = () => {
           // 응답 데이터가 있으면 상태 업데이트
           setFoodName(response.data.foodNames || '');
           setSpoilage(response.data.spoilNames || '');
+          // 상태 값 변경 시 텍스트를 음성으로 읽어줍니다.
           speakText(`${response.data.foodNames || ''}, ${response.data.spoilNames || ''}`);
         }
       } catch (error) {
@@ -34,6 +35,7 @@ const Detail = () => {
 
   // 텍스트를 음성으로 읽어주는 함수
   const speakText = (text) => {
+    console.log('Speaking text:', text); // 디버깅 로그 추가
     const synth = window.speechSynthesis;
     if (synth.speaking) {
       synth.cancel();
