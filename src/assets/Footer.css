@@ -1,0 +1,45 @@
+
+.FT_Container {
+
+    background-color:#D3D4E8 ;
+    width: 100vw;
+    height: 75px;
+    position: absolute;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+}
+
+.FT_Contents {
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 60px;
+    margin-left: 5px;
+}
+
+.home_btn {
+
+    width: 35px;
+}
+
+.history_btn {
+
+    width: 35px;
+}
+
+.option_btn {
+
+    width: 35px;
+}
+
+.my_btn {
+
+    width: 35px;
+}
+
+.logout_btn {
+
+    width: 35px;
+}

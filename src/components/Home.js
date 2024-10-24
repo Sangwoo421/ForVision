@@ -1,10 +1,18 @@
+import Header from "./Header";
+import Footer from "./Footer";
 
 const Home = () => {
 
-    return(
+    return (
 
         <div>
-            <h1>Home</h1>
+            <Header/>
+            <div className="HomeContainer">
+                <div className="HomeContents">
+                    
+                </div>
+            </div>
+            <Footer/>
         </div>
     );
 }
