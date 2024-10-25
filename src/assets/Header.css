@@ -7,5 +7,21 @@
     height: 75px;
     position: absolute;
     top: 0;
+    display: flex;
+    align-items: center;
 }
 
+.HD_Contents {
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+.Logo {
+
+    position: absolute;
+    left: 5%;
+}

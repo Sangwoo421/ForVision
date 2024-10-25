@@ -6,7 +6,7 @@ const Header = () => {
         <div>
             <div className='HD_Container'>
                 <div className='HD_Contents'>
-
+                    <p className='Logo'>LOGO</p>
                 </div>
             </div>
         </div>
