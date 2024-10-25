@@ -18,7 +18,12 @@
     align-items: center;
 }
 
+.bell_icon {
 
+    position: absolute;
+    right: 15px;
+    width: 35px;
+}
 
 .Logo {
 

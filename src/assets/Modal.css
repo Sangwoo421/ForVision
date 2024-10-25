@@ -1,0 +1,11 @@
+.box {
+   
+   width: 250px;
+    height: 300px;
+    color: black;
+   background-color: #D3D4E8;
+   position: absolute;
+   top: 85px;
+   right: 10px;
+
+  }
