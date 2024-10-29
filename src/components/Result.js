@@ -75,7 +75,12 @@ const Result = () => {
                         <div className='ntr'>
                             {Object.keys(ntrName).map((food, index) => (
                                 <div key={index}>
-                                    <strong>{food}</strong>: 에너지 {ntrName[food].에너지}kcal, 단백질 {ntrName[food].단백질}g, 지방 {ntrName[food].지방}g, 탄수화물 {ntrName[food].탄수화물}g, 당류 {ntrName[food].당류}g, 나트륨 {ntrName[food].나트륨}mg
+                                    에너지 {ntrName[food].에너지}kcal<br/>
+                                    단백질 {ntrName[food].단백질}g<br/>
+                                    지방 {ntrName[food].지방}g<br/>
+                                    탄수화물 {ntrName[food].탄수화물}g<br/>
+                                    당류 {ntrName[food].당류}g<br/>
+                                    나트륨 {ntrName[food].나트륨}mg
                                 </div>
                             ))}
                         </div>
