@@ -1,0 +1,50 @@
+.MainContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+ 
+}
+
+.MainContents {
+    max-width: 800px;
+    text-align: center;
+}
+
+.webcam {
+
+    width: 400px;
+    height: 400px;
+    margin-top: 250px;
+}
+
+.line1 {
+
+    width: 400px;
+    position: absolute;
+    top: 25vh;
+    color: #FFC600;
+}
+
+.line2 {
+    width: 400px;
+    position: absolute;
+    top: 70vh;
+}
+
+.text {
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #C5A63A;
+    font-size: 1.2rem;
+}
+
+.Camera_icon{
+    position: absolute;
+    top: 22.5vh;
+    left: 15px;
+    width: 30px;
+    
+}
+

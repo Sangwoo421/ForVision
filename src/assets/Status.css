@@ -1,0 +1,31 @@
+.StatusRed,
+.StatusYellow,
+.StatusGreen {
+
+    position: fixed;
+    margin-top: 13%;
+    left: 12.8%;
+    width: 75vw;
+    height: 3vh;
+    border-radius: 20px;
+    animation: blink-effect 1.5s ease-in-out infinite;
+}
+
+.StatusRed {
+
+    background-color: red;
+    box-shadow: 0 8px 12px rgba(255, 0, 0, 0.582);
+}
+
+.StatusYellow {
+
+    position: fixed;
+    background-color: rgb(255, 238, 0);
+    box-shadow: 0 8px 12px rgba(255, 238, 0, 0.582);
+}
+
+.StatusGreen {
+
+    background-color: rgb(0, 255, 21);
+    box-shadow: 0 8px 12px rgba(0, 255, 115, 0.582);
+}

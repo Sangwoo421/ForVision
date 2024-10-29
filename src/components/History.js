@@ -1,7 +1,8 @@
+import { useNavigate } from "react-router-dom";
 import Header from "./Header";
 import Footer from "./Footer";
 import '../assets/History.css'
-import { useNavigate } from "react-router-dom";
+
 
 const History = () => {
 
@@ -11,16 +12,17 @@ const History = () => {
         navigate(-1);
     }
 
-    return(
+    return (
         <div>
-            <Header/>
+            <Header />
+            <hr className="Line" />
+            <img src="./Icon/arrow.png" className="Arrow_icon" onClick={goback} />
             <div className="HistoryContainer">
                 <div className="HistoryContents">
-                    <hr className="Line"/>
-                    <img src="./Icon/arrow.png" className="Arrow_icon" onClick={goback}/>
+                    <p className="History_text">내 기록</p>
                 </div>
             </div>
-            <Footer/>
+            <Footer />
         </div>
     )
 }

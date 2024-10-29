@@ -22,7 +22,7 @@ const Header = () => {
         <div>
             <div className='HD_Container'>
                 <div className='HD_Contents'>
-                    <img className='Logo' src='/Logo.png' onClick={ToHome}/>
+                    <img className='Logo' src='/Logo.png' />
                     <img className='bell_icon' src='/Icon/bell.png' onClick={toggleModal} />
                     {
                         modal === true ? <Modal/> : null

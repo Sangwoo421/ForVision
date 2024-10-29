@@ -16,3 +16,16 @@
     left: 0;
     bottom: 8%;
 }
+
+.Home_text {
+
+    position: absolute;
+    top: 110px;
+    left: 40px;
+    color: #2B2F8E;
+    font-size: 1rem;
+}
+
+.text2 {
+    margin-top: 35px ;
+}

@@ -1,0 +1,60 @@
+.ResultContainer {
+
+    display: flex;
+    align-items: center;
+}
+
+.Result_Contents {
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.Result_box {
+
+    position: absolute;
+    bottom: 90px;
+    width: 400px;
+    height: 220px;
+    border: 1px solid #C5A63A;
+}
+
+.Result_text {
+    position: absolute;
+    left: 15px;
+    top: -10px;
+    color: #C5A63A;
+}
+
+.line {
+    color: #C5A63A;
+}
+
+.Result_img {
+    width: 400px;
+    height: 400px;
+    margin-top: 200px;
+    margin-left: 15px;
+
+}
+
+.FoodName, .Spoilage {
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.FoodName {
+
+    margin-top: 50px ;
+    font-size: 20px;
+    font-weight: bold ;
+}
+
+.Spoilage {
+
+    margin-top: 20px ;
+    margin-right: 60px;
+}
