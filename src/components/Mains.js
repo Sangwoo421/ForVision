@@ -139,21 +139,19 @@ const Mains = () => {
                         'Content-Type': 'multipart/form-data',
                     },
                 });
-    
-                // 백엔드로부터 정확한 결과를 받았는지 확인
-                if (response.data && response.data.success) { // 예: 백엔드가 'success' 값을 포함하는 응답을 반환하는 경우
-                    console.log("정확한 객체가 탐지되었습니다. 결과 페이지로 이동합니다.");
-                    navigate('/result', { state: { fileSrc: fileURL } });
-                } else {
-                    console.log("탐지된 객체가 없습니다.");
-                    speakText("탐지된 객체가 없습니다. 다시 시도해주세요.");
-                    setCaptured(false); // 탐지가 실패한 경우 다시 탐지 허용
-                }
-    
+
+                console.log("파일 업로드 성공:", response.data);
             } catch (error) {
                 console.error('파일 업로드 오류:', error);
             } finally {
-                setLoading(false); // 로딩 상태 해제
+                // 웹캠 스트림 정지 및 상세 페이지로 네비게이션
+                if (videoRef.current && videoRef.current.srcObject) {
+                    videoRef.current.srcObject.getTracks().forEach(track => track.stop());
+                    videoRef.current.srcObject = null;
+                }
+                setCaptured(true);
+                console.log("캡처된 이미지로 상세 페이지로 이동합니다.");
+                navigate('/result', { state: { fileSrc: fileURL } });
             }
         }, 'image/jpeg');
     };
