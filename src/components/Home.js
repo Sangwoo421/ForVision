@@ -51,10 +51,10 @@ const Home = () => {
                     <p className="Home_text text2">화면을 터치해주세요!</p>
                     <div className='ImgContainer'>
                         <div className='ImgContents'>
-                        <img src='/1.png' className='HomeImg1 Img1' />
-                        <img src='/2.jpg' className='HomeImg1 Img2' />
-                        <img src='/3.jpg' className='HomeImg2 Img3' />
-                        <img src='/4.jpg' className='HomeImg3 Img4' />
+                        <img src='/Img1.png' className='HomeImg1 Img1' />
+                        <img src='/Img2.jpg' className='HomeImg1 Img2' />
+                        <img src='/Img3.jpg' className='HomeImg2 Img3' />
+                        <img src='/Img4.jpg' className='HomeImg3 Img4' />
                         </div>
                     </div>
                     <img className="CameraIcon" src="/Icon/CameraIcon.png" alt="Camera Icon" />

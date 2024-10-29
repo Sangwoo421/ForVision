@@ -16,7 +16,7 @@
     position: absolute;
     bottom: 90px;
     width: 400px;
-    height: 220px;
+    height: 300px;
     border: 1px solid #C5A63A;
 }
 
@@ -34,13 +34,13 @@
 .Result_img {
     width: 400px;
     height: 400px;
-    margin-top: 200px;
+    margin-top: 130px;
     margin-left: 15px;
 
 }
 
-.FoodName, .Spoilage {
-
+.FoodName, .Spoilage, .ntr {
+    
     display: flex;
     justify-content: center;
     align-items: center;
@@ -55,6 +55,9 @@
 
 .Spoilage {
 
-    margin-top: 20px ;
-    margin-right: 60px;
+    margin-top: 15px;
+}
+
+.ntr {
+    margin-right: 80px;
 }

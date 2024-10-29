@@ -2,8 +2,8 @@
 .StatusYellow,
 .StatusGreen {
 
-    position: fixed;
-    margin-top: 13%;
+    position: absolute;
+    bottom: 12%;
     left: 12.8%;
     width: 75vw;
     height: 3vh;

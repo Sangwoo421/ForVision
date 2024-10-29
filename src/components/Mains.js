@@ -125,33 +125,35 @@ const Mains = () => {
             const fileURL = URL.createObjectURL(blob);
             setFileSrc(fileURL);
             console.log("이미지가 캡처되고 blob으로 저장되었습니다.");
-
+    
             speakText("사진이 찍혔습니다. 잠시만 기다려주세요");
-
+    
             const formData = new FormData();
             formData.append('file', blob, 'image.jpg');
-
+    
             setLoading(true);
-
+    
             try {
                 const response = await axios.post('/upload', formData, {
                     headers: {
                         'Content-Type': 'multipart/form-data',
                     },
                 });
-
-                console.log("파일 업로드 성공:", response.data);
+    
+                // 백엔드로부터 정확한 결과를 받았는지 확인
+                if (response.data && response.data.success) { // 예: 백엔드가 'success' 값을 포함하는 응답을 반환하는 경우
+                    console.log("정확한 객체가 탐지되었습니다. 결과 페이지로 이동합니다.");
+                    navigate('/result', { state: { fileSrc: fileURL } });
+                } else {
+                    console.log("탐지된 객체가 없습니다.");
+                    speakText("탐지된 객체가 없습니다. 다시 시도해주세요.");
+                    setCaptured(false); // 탐지가 실패한 경우 다시 탐지 허용
+                }
+    
             } catch (error) {
                 console.error('파일 업로드 오류:', error);
             } finally {
-                // 웹캠 스트림 정지 및 상세 페이지로 네비게이션
-                if (videoRef.current && videoRef.current.srcObject) {
-                    videoRef.current.srcObject.getTracks().forEach(track => track.stop());
-                    videoRef.current.srcObject = null;
-                }
-                setCaptured(true);
-                console.log("캡처된 이미지로 상세 페이지로 이동합니다.");
-                navigate('/result', { state: { fileSrc: fileURL } });
+                setLoading(false); // 로딩 상태 해제
             }
         }, 'image/jpeg');
     };

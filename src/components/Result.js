@@ -16,6 +16,7 @@ const Result = () => {
     // 상태 변수 정의
     const [foodName, setFoodName] = useState('');
     const [spoilage, setSpoilage] = useState('');
+    const [ntrName, setntrName] = useState('');
 
     useEffect(() => {
         const fetchData = async () => {
@@ -25,8 +26,9 @@ const Result = () => {
 
                     setFoodName(response.data.foodNames || '');
                     setSpoilage(response.data.spoilNames || '');
+                    setntrName(response.data.ntrNames || '');
 
-                    speakText(`${response.data.foodNames || ''}, ${response.data.spoilNames || ''}`);
+                    speakText(`${response.data.foodNames || ''}, ${response.data.spoilNames || ''}, ${response.data.ntrNames || ''}`);
                 }
             } catch (error) {
                 console.error('Error fetching data from /result:', error);
@@ -72,7 +74,10 @@ const Result = () => {
                             {foodName} {/* 음식 이름 표시 */}
                         </div>
                         <div className='Spoilage'>
-                            상태: {spoilage} {/* 부패 상태 표시 */}
+                            {spoilage} {/* 부패 상태 표시 */}
+                        </div>
+                        <div className='ntr'>
+                            {ntrName} {/* 영양소 표시 */}
                         </div>
                         <Status spoilage={spoilage} /> {/* 상태 컴포넌트 */}
                     </div>
