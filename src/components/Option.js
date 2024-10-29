@@ -10,16 +10,16 @@ const Option = () => {
         navigate(-1);
     }
 
-    return(
+    return (
         <div>
-            <Header/>
+            <Header />
             <div className="option_Container">
                 <div className="option_contents">
-                    <hr/>
-                    <img src="/Icon/Arrow.png" className="Arrow_icon" onClick={goback}/>
+                    <hr />
+                    <img src="/Icon/Arrow.png" className="Arrow_icon" onClick={goback} />
                 </div>
             </div>
-            <Footer/>
+            <Footer />
         </div>
     )
 }

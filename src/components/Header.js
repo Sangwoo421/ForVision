@@ -10,7 +10,7 @@ const Header = () => {
     const toggleModal = () => {
         setModal(!modal)
     }
-    
+
     const navigate = useNavigate();
 
     const ToHome = () => {
@@ -18,14 +18,14 @@ const Header = () => {
         navigate('/')
     }
 
-    return(
+    return (
         <div>
             <div className='HD_Container'>
                 <div className='HD_Contents'>
-                    <img className='Logo' src='/Logo.png' />
+                    <img className='Logo' src='/Logo.png' onClick={ToHome} />
                     <img className='bell_icon' src='/Icon/bell.png' onClick={toggleModal} />
                     {
-                        modal === true ? <Modal/> : null
+                        modal === true ? <Modal /> : null
                     }
                 </div>
             </div>

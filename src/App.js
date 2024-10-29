@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import Home from './components/Home';
 import Option from './components/Option';
 import History from './components/History';
@@ -19,6 +19,7 @@ function App() {
         <Route path='mypage' element={<Mypage />} />
         <Route path='login' element={<Login />} />
         <Route path='/result' element={<Result />} />
+        <Route path="*" element={<Navigate to="/" />} />
       </Routes>
     </Router>
   );

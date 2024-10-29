@@ -184,8 +184,8 @@ const Mains = () => {
                     <canvas ref={canvasRef} style={{ display: 'none' }} width="400" height="400" />
 
                     {loading && (
-                        <div className="loading">
-                            <img src="/Icon/loding.gif" alt="Loading" />
+                        <div className="LoadingContainer">
+                            <img src="/Icon/loding.gif" alt="Loading" className='Loding' />
                         </div>
                     )}
                     <hr className="line2" />

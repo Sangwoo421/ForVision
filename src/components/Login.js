@@ -3,13 +3,13 @@ import Footer from "./Footer";
 
 const Login = () => {
 
-    return(
+    return (
         <div>
-            <Header/>
+            <Header />
             <div>
 
             </div>
-            <Footer/>
+            <Footer />
         </div>
     )
 }

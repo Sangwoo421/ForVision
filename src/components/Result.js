@@ -69,7 +69,7 @@ const Result = () => {
                     <div className="Result_box">
                         <p className="Result_text">사진 분석 완료</p>
                         <div className='FoodName'>
-                            사과{foodName} {/* 음식 이름 표시 */}
+                            {foodName} {/* 음식 이름 표시 */}
                         </div>
                         <div className='Spoilage'>
                             상태: {spoilage} {/* 부패 상태 표시 */}

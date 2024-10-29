@@ -30,16 +30,16 @@ const Footer = () => {
         navigate('/login')
     }
 
-    return(
+    return (
 
         <div>
             <div className='FT_Container'>
                 <div className='FT_Contents'>
-                    <img className='option_btn' src='/Icon/option.png' onClick={ToOption}/> 
-                    <img className='history_btn' src='/Icon/history.png' onClick={ToHistory}/>
+                    <img className='option_btn' src='/Icon/option.png' onClick={ToOption} />
+                    <img className='history_btn' src='/Icon/history.png' onClick={ToHistory} />
                     <img className='home_btn' src='/Icon/home.png' onClick={ToHome} />
-                    <img className='my_btn' src='/Icon/my.png' onClick={ToMypage}/>
-                    <img className='logout_btn' src='/Icon/logout.png' onClick={ToLogin}/>
+                    <img className='my_btn' src='/Icon/my.png' onClick={ToMypage} />
+                    <img className='logout_btn' src='/Icon/logout.png' onClick={ToLogin} />
                 </div>
             </div>
         </div>
