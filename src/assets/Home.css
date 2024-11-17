@@ -34,25 +34,22 @@
 
 .ImgContainer {
     height: 100%;
-    width: 100%; /* 화면 너비 */
+    width: 100%;
     position: relative;
     animation: slideInfinite 10s linear infinite;
     
 }
 
-/* 슬라이드 애니메이션 */
 .ImgContents {
     position: relative;
     
 }
 
-/* 기존 이미지 스타일 유지 */
 .HomeImg1, .HomeImg2, .HomeImg3, .HomeImg4 {
     position: absolute;
     border-radius: 30px;
 }
 
-/* 각 이미지 위치 및 크기 */
 .Img1 {
     top: 250px;
     left: 40px;
@@ -81,13 +78,13 @@
     height: 400px;
 }
 
-/* 슬라이드 애니메이션 */
+
 @keyframes slideInfinite {
     0% {
-        transform: translateX(40vw); /* 시작 위치 */
+        transform: translateX(40vw);
     }
     100% {
-        transform: translateX(-200vw); /* 왼쪽 끝까지 이동 */
+        transform: translateX(-200vw);
     }
 }
 

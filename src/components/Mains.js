@@ -195,6 +195,6 @@ const Mains = () => {
             <Footer />
         </div>
     );
-}
+} 
 
 export default Mains;

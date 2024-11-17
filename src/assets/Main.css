@@ -52,7 +52,7 @@
 
 .ImgContainer {
     height: 100%;
-    width: 100%; /* 화면 너비 */
+    width: 100%;
     position: relative;
     animation: slideInfinite 10s linear infinite;
     
