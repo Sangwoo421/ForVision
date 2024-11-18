@@ -37,7 +37,7 @@ const Mains = () => {
         if (modelLoaded) {
             speakText("카메라가 켜졌습니다");
             console.log("카메라가 시작되었습니다.");
-
+    
             if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
                 navigator.mediaDevices.getUserMedia({
                     video: {
@@ -51,11 +51,12 @@ const Mains = () => {
                             videoRef.current.srcObject = stream;
                             videoRef.current.play();
                             console.log("비디오 스트림이 시작되었습니다.");
-
-                            const id = setInterval(() => {
-                                console.log("음식을 탐지 중...");
-                                detectFood(id); // 음식 탐지 함수 호출
-                            }, 1000);
+    
+                            // 10초 뒤에 캡처 시작
+                            setTimeout(() => {
+                                console.log("10초가 경과했습니다. 이미지를 캡처합니다...");
+                                handleCapture();
+                            }, 10000); // 10초 (10,000ms)
                         }
                     })
                     .catch(err => {

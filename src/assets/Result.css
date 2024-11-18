@@ -32,11 +32,11 @@
 }
 
 .Result_img {
+    position: absolute;
     width: 400px;
     height: 400px;
-    margin-top: 130px;
-    margin-left: 15px;
-
+    left: 35%;
+    top: 14%;
 }
 
 .FoodName, .Spoilage, .ntr {
