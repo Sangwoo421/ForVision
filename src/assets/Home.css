@@ -36,7 +36,7 @@
     height: 100%;
     width: 100%;
     position: relative;
-    animation: slideInfinite 10s linear infinite;
+
     
 }
 
@@ -76,15 +76,5 @@
     left: 280px;
     width: 250px;
     height: 400px;
-}
-
-
-@keyframes slideInfinite {
-    0% {
-        transform: translateX(40vw);
-    }
-    100% {
-        transform: translateX(-200vw);
-    }
 }
 
